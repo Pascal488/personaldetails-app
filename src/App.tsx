@@ -1,17 +1,19 @@
-import { useSelector } from 'react-redux'
-import {getUserDetails} from "./features/auth/authSlice"
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Registerpage from './pages/auth/registerpage'
+import LoginPage from './pages/auth/loginpage'
 
-function App() {
-  const userDetails = useSelector(getUserDetails);
-  function letsee() {
-    console.log(userDetails)
-  }
+
+const App = () => {
   return (
-    <>
-      <button onClick={letsee} className='bg-blue-600'>
-        Click me
-    </button>
-    </>
+              <>
+                <BrowserRouter>
+                       <Routes>
+                              <Route path='/register' element={<Registerpage />} />
+                              <Route path='/login' element={<LoginPage/>} />
+                              
+                     </Routes>
+                </BrowserRouter>
+              </>
   )
 }
 
