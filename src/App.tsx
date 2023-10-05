@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux'
 import {getUserDetails} from "./features/auth/authSlice"
-import './App.css'
 
 function App() {
   const userDetails = useSelector(getUserDetails);
@@ -9,7 +8,7 @@ function App() {
   }
   return (
     <>
-      <button onClick={letsee}>
+      <button onClick={letsee} className='bg-blue-600'>
         Click me
     </button>
     </>

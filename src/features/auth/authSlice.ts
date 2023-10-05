@@ -11,7 +11,7 @@ const initialState = {
 
 export const authSlice = createSlice({
        name: "authslice",
-       initialState:initialState,
+       initialState,
        reducers: {
               getUserDetails: (state, action) => {
                      console.log(state.user)
