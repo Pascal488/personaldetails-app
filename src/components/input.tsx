@@ -17,7 +17,6 @@ const input = ({ ...props}: InputProps) => {
                      {props.Icon}
                      <input type={props.type} className="w-full outline-none ml-8" placeholder={props.placeholderText}    {...props.register}
                      />
-
               </div>
          </div>
   )

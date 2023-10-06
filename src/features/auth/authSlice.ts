@@ -23,7 +23,8 @@ export const authSlice = createSlice({
                      }
                      state.user = userDetails.user
                     
-                     }
+              },
+              
               
        }
 })

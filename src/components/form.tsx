@@ -2,24 +2,26 @@ import {  IconLockSquareRoundedFilled, IconMailFilled } from "@tabler/icons-reac
 import LOGO from "../assets/images/devchallenges.svg"
 import {socialIcons} from "../lib/index"
 import Input from "./input"
-import useRegister from "../hooks/useRegister"
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
-type IRegister = {
-       email: string
+
+export type INitialValues = {
+       email:string
        password: string
 }
-type IRegisterProp = {
+type IFormProp = {
        headerText1: string
-       headerText2?:string
+       headerText2?: string
+       onSubmit: (data: INitialValues) => void
+       userCredantialErrors: string | undefined
+       successMessage?:string
        
        
 }
-const form = ({headerText1,headerText2}:IRegisterProp) => {
-       const {handleRegister} = useRegister()
-       const values: IRegister = {
-              email: "",
-              password:""
+const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMessage}:IFormProp) => {
+       const values: INitialValues = {
+              email:"" ,
+              password: "",
        }
        const {register,handleSubmit,formState:{errors} } = useForm({
               defaultValues: {
@@ -28,10 +30,7 @@ const form = ({headerText1,headerText2}:IRegisterProp) => {
               },
        })
        const Icons = socialIcons()
-       const onSubmit = (data: any) => {
-              console.log(data)
-              handleRegister(data)
-            }
+    
   return (
        <div className="lg:flex lg:justify-center lg:items-center lg:w-full lg:h-screen md:flex md:justify-center md:h-screen md:items-center font-[Noto sans]">
               <div className="flex flex-col p-5 gap-7 lg:max-h-full lg:p-12 lg:max-w-md lg:border-[1px] lg:border-gray-600 lg:rounded-xl md:max-w-md md:border-[1px] md:border-gray-600 md:rounded-xl">
@@ -54,8 +53,14 @@ const form = ({headerText1,headerText2}:IRegisterProp) => {
                                             Icon={<IconMailFilled className="absolute top-2 bottom-0 right-0 left-2 text-gray-600" size={29} />}
                                             placeholderText="Email"
                                             values="email"
-                                             type={"text"}
-                                            register={register("email",{required:"Email is required"})}
+                                            type={"text"}
+                                            register={register("email", {
+                                                   required: "Email is required",
+                                                   pattern: {
+                                                        value:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/,
+                                                        message: 'Please enter a valid email',
+                                            },
+                                            })}
                                      />
                                    {errors && (<span className="text-red-500 text-xs">{errors.email?.message}</span>)}  
                                    <Input
@@ -65,7 +70,11 @@ const form = ({headerText1,headerText2}:IRegisterProp) => {
                                             type={"password"}
                                             register={register("password",{required:"Password is required"})}
                                      />           
-                                    {errors && (<span className="text-red-500 text-xs">{errors.password?.message}</span>)}  
+                                     {errors && (<span className="text-red-500 text-xs">{errors.password?.message}</span>)}  
+                                     <div className="flex justify-center text-center mt-2 ">
+                                            <p className="text-center text-red-600 ">{userCredantialErrors}</p>
+                                            <p className="text-center text-green-600 ">{successMessage}</p>
+                                     </div>
                                    <button type="submit" className="w-full py-2.5 px-2 bg-[#2F80ED] text-white rounded-md mt-5">
                                           Start coding now 
                                    </button>

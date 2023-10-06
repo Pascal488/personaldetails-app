@@ -3,38 +3,41 @@ import { useDispatch } from "react-redux"
 import { addUserDetails } from "../features/auth/authSlice"
 import { REGISTER } from "../grapql/mutations"
 import { useMutation } from "@apollo/client"
+import { useState } from "react"
 
 type IRegister = {
        email: string
        password: string
-       name: string
-       username:string
      }
 
 
 
 const useRegister = () => {
-       const [registerUser, {  }] = useMutation(REGISTER)
+       const [registerUser, { error }] = useMutation(REGISTER)
+       const [successMessage,setSuccessMessage] = useState("")
        const register = useDispatch()
        const handleRegister = (data: IRegister) => {
               registerUser({
                      variables: {
-                            user: {
+                            registerInput: {
                                    email: data.email,
                                    password: data.password,
-                                   name: "kid",
-                                   username:"modo"
                             }
 
                      },
                      onCompleted() {
+                            setSuccessMessage(`User with this email ${data.email}  created`)
                             register(addUserDetails(data))
+
                      }
               })
        }
        
        return {
-              handleRegister
+              handleRegister,
+              userCredantialErrors: error,
+              successMessage
+              
        }
 }
 
