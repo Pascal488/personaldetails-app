@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+       .errors-styles{
+           @apply text-red-500 text-xs absolute -bottom-[6px] left-6 ;
+       }
+       .input-width {
+              @apply lg:w-[416.932px] md:w-[416.932px] ;
+       }
+
+}

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import PROFILE from "../../assets/images/devchallenges.png"
 import Header from "../../components/header"
 
@@ -5,7 +6,10 @@ import Header from "../../components/header"
 
 
 const personalinfo = () => {
-
+       const navigate = useNavigate()
+       const goToEdit = () => {
+              navigate("/edit")
+       }
        return (
 
               <>
@@ -36,7 +40,7 @@ const personalinfo = () => {
                                                  </div>
                                           </div>
                                           <div>
-                                                 <button className="border-[1px] border-gray-600 rounded-xl w-[100px] py-1.5 px-4 text-gray-600">Edit</button>
+                                                 <button className="border-[1px] border-gray-600 rounded-xl w-[100px] py-1.5 px-4 text-gray-600" onClick={goToEdit}>Edit</button>
                                           </div>
                                    </div>
                                    <hr className="h-px bg-gray-300 w-full"/>

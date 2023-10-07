@@ -1,11 +1,15 @@
 import Header from "../../components/header"
-import Input,{Textarea,InputWrapper} from "../../components/input"
+import Input, { Textarea, InputWrapper } from "../../components/input"
+import PROFILE from "../../assets/images/devchallenges.png"
 import { useForm } from "react-hook-form"
+import { IconChevronLeft } from "@tabler/icons-react"
+import { useNavigate } from "react-router-dom"
 
 
 
 
 const updateinfo = () => {
+      const navigate = useNavigate() 
        const values = {
               name:"" ,
               bio: "",
@@ -25,17 +29,24 @@ const updateinfo = () => {
        const onSubmit = () => {
               console.log("Hello there")
        }
-
+       const backtoInfo = () => {
+              navigate("/info")
+       }
        return (
 
               <>
-                     <div className="lg:px-16 lg:py-5 p-5">
+                     <div className="lg:px-16 lg:py-5 p-5 relative">
                             <Header />
+                            <div className="absolute lg:left-[24.5rem] md:left-[24.5rem] xl:left-[24.5rem]  cursor-pointer ">
+                                   <span className="flex items-center text-[#2D9CDB]" onClick={backtoInfo}>
+                                          <IconChevronLeft />
+                                          <p>Back</p>
+                                   </span>
+                            </div>
                             <div className="flex  justify-center lg:mt-10  mt-5">
-                                   
-                                   <div className="flex flex-col justify-center items-center w-full  border-[1px] border-gray-[#E0E0E0]  rounded-lg lg:max-w-4xl ">
+                                   <div className="flex flex-col justify-center items-center w-full  border-[1px] border-#E0E0E0]  rounded-lg lg:max-w-4xl mt-3 lg:mt-0">
                                           <div className="flex justify-between items-center mt-5 w-full p-6">
-                                                 <div className="flex flex-col">
+                                                 <div className="flex flex-col ">
                                                         <div>
                                                                <h1 className="text-2xl ">Change Info</h1>
                                                         </div>
@@ -49,11 +60,23 @@ const updateinfo = () => {
                                           <div className="flex flex-col gap-6 w-full py-5">
                                                  <form action="p-5" onSubmit={handleSubmit(onSubmit)}>
                                                         <InputWrapper>
+                                                        
+                                                               <div className="flex items-center space-x-5 ">
+                                                                      <div className="border-#E0E0E0] border-[1px] p-[2px] rounded-lg">
+                                                                             <img src={PROFILE} alt="" className="w-16 h-16 hover:cursor-pointer"/>
+                                                                      </div>
+                                                                      <div>
+                                                                             <p className="text-gray-600 text-sm cursor-pointer">CHANGE PHOTO</p>
+                                                                      </div>
+
+                                                               </div>
+                                                        </InputWrapper>
+                                                        <InputWrapper>
                                                                <Input
-                                                                      width="lg:w-[416.932px] md:w-[416.932px] "
+                                                                      width="input-width "
                                                                       label={"Name"}   
                                                                       placeholderText="Enter your name..."
-                                                                      type={"name"}
+                                                                      type={"text"}
                                                                       register={register("name", {
                                                                              required: "Name is required",
                                                                              pattern: {
@@ -62,7 +85,7 @@ const updateinfo = () => {
                                                                        }
                                                                       })}
                                                                />
-                                                        {errors && (<span className="text-red-500 text-xs absolute -bottom-[3px] lg:left-6 left-[22%] ">{errors.name?.message}</span>)}  
+                                                        {errors && (<span className="errors-styles">{errors.name?.message}</span>)}  
                                                         </InputWrapper>
                                                         <InputWrapper>
                                                                <Textarea 
@@ -72,28 +95,24 @@ const updateinfo = () => {
                                                                       })}
                                                                       label="Bio"
                                                                />       
-                                                        {errors && (<span className="text-red-500 text-xs absolute -bottom-[3px] lg:left-6 left-[22%]">{errors.bio?.message}</span>)}  
+                                                        {errors && (<span className="errors-styles">{errors.bio?.message}</span>)}  
                                                         </InputWrapper>
                                                         <InputWrapper>
                                                                <Input
-                                                                      width="lg:w-[416.932px] md:w-[416.932px] "
+                                                                      width="input-width "
                                                                       placeholderText="Enter your phone number..."
                                                                       type={"text"}
                                                                       register={register("phoneNumber", {
                                                                              required: "PhoneNumber is required",
-                                                                             pattern: {
-                                                                                    value:/^[0-9]{10}$/,
-                                                                                    message: 'Please enter a valid phonenumber',
-                                                                      },
                                                                       })}
                                                                       label={"Phone"}   
                                                                />
-                                                               {errors && (<span className="text-red-500 text-xs absolute -bottom-[3px] lg:left-6 left-[22%]">{errors.phoneNumber?.message}</span>)}  
+                                                               {errors && (<span className="errors-styles">{errors.phoneNumber?.message}</span>)}  
 
                                                         </InputWrapper>
                                                         <InputWrapper>
                                                                <Input
-                                                                      width="lg:w-[416.932px] md:w-[416.932px] "
+                                                                      width="input-width  "
                                                                       placeholderText="Enter your email..."
                                                                       values="email"
                                                                       type={"text"}
@@ -106,11 +125,11 @@ const updateinfo = () => {
                                                                       })}
                                                                       label={"Email"}   
                                                                />
-                                                               {errors && (<span className="text-red-500 text-xs absolute -bottom-[3px] lg:left-6 left-[22%]">{errors.email?.message}</span>)}  
+                                                               {errors && (<span className="errors-styles">{errors.email?.message}</span>)}  
                                                         </InputWrapper>
                                                         <InputWrapper>
                                                                <Input
-                                                                      width="lg:w-[416.932px] md:w-[416.932px] "
+                                                                      width="input-width "
                                                                       placeholderText="Enter your password..."
                                                                       type={"password"}
                                                                       register={register("password", {
@@ -118,7 +137,7 @@ const updateinfo = () => {
                                                                       })}
                                                                       label="Password"
                                                                />
-                                                               {errors && (<span className="text-red-500 text-xs absolute -bottom-[3px] md:left-6 lg:left-6 left-[22%]">{errors.password?.message}</span>)}  
+                                                               {errors && (<span className="errors-styles">{errors.password?.message}</span>)}  
                                                         </InputWrapper>
                                                         <InputWrapper>
                                                                <button type="submit" className="py-[5px] px-4 bg-[#2F80ED] text-white rounded-md mt-5 md:w-[35%] lg:w-20">

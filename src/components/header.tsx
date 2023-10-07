@@ -32,15 +32,15 @@ const header = () => {
                                                         <img src={PROFILE} alt="" className="w-10 h-10 hover:cursor-pointer"/>
                                                  </div>
                                                  <div>
-                                                        <Menu.Button>
+                                                        <Menu.Button className="lg:block md:block hidden">
                                                                <p>Paschal maxi</p>
                                                         </Menu.Button>
                                                  </div>
                                           </Menu.Button>
-                                          <Menu.Items as="div" className="z-10 border-[1px] border-[#E0E0E0] rounded-lg bg-[#FFF] absolute w-48   py-5 px-3">
+                                          <Menu.Items as="div" className="z-10 border-[1px] border-[#E0E0E0] rounded-lg bg-[#FFF] absolute right-0 w-48   py-5 px-3">
                                                         {MenuItems.map((data: any, key: number) => {
                                                                return (
-                                                                      <Menu.Item as="a" key={key} className="flex flex-col border border-transparent  hover:bg-[#F2F2F2] hover:border-slate-200  px-2 rounded-md cursor-pointer  active:ring-2">
+                                                                      <Menu.Item as="a" key={key} className="flex flex-col border border-transparent  hover:bg-[#F2F2F2] hover:border-[#F2F2F2] px-2 rounded-md cursor-pointer">
                                                                              <div className="flex items-center space-x-2 py-2">
                                                                                     <span>{data.icon}</span>
                                                                                     <span className={`text-sm ${key === 2 ? 'text-red-600' : ''}`}>{data.text}</span>

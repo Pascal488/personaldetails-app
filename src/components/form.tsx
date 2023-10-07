@@ -18,11 +18,8 @@ type IFormProp = {
        redirect: string 
        redirectText1: string
        redirectText2: string
-
-
-       
-       
 }
+
 const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMessage,redirect,redirectText1,redirectText2}:IFormProp) => {
        const values: INitialValues = {
               email:"" ,
@@ -37,8 +34,8 @@ const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMess
        const Icons = socialIcons()
     
   return (
-       <div className="lg:flex lg:justify-center lg:items-center lg:w-full lg:h-screen md:flex md:justify-center md:h-screen md:items-center font-[Noto sans]">
-              <div className="flex flex-col p-5 gap-7 lg:max-h-full lg:p-12 lg:max-w-md lg:border-[1px] lg:border-[#E0E0E0] lg:rounded-xl md:max-w-md md:border-[1px] md:border-[#E0E0E0]  md:rounded-xl">
+       <div className="lg:flex lg:justify-center lg:items-center lg:w-full lg:h-screen md:flex md:justify-center md:h-screen md:items-center font-[Noto sans] ">
+              <div className="flex flex-col p-5 gap-7 lg:max-h-full lg:p-12 lg:max-w-lg md:w-[500px]  lg:w-[500px] lg:border-[1px] lg:border-[#E0E0E0] lg:rounded-xl md:max-w-md md:border-[1px] md:border-[#E0E0E0]  md:rounded-xl ">
                      <div className="flex justify-between">
                             <div className="">
                                    <img src={LOGO} alt="" className="w-full "/>
@@ -80,7 +77,7 @@ const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMess
                                             <p className="text-center text-red-600 ">{userCredantialErrors}</p>
                                             <p className="text-center text-green-600 ">{successMessage}</p>
                                      </div>
-                                   <button type="submit" className="w-full py-2.5 px-2 bg-[#2F80ED] text-white rounded-md mt-5">
+                                   <button type="submit" className="w-full py-2.5 px-2 bg-[#2F80ED] text-white rounded-md ">
                                           Start coding now 
                                    </button>
                               </form>

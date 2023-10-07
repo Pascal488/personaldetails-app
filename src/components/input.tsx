@@ -5,7 +5,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
        Icon?: React.ReactNode
        values?:"email" | "password" 
        placeholderText: string
-       type?: "text" | "password" | "name"
+       type?: "text" | "password"
        register: UseFormRegisterReturn
        width?: string
        label?:string
@@ -51,7 +51,7 @@ export const Textarea = ({ ...props}: InputProps) => {
 export const InputWrapper = ({children}: InputWrapperProps) => {
        return (
 
-              <div className="flex lg:justify-between md:justify-center justify-center items-center  py-3 px-5 relative">
+              <div className="flex lg:justify-between  items-center  py-3 px-5 relative">
                      {children}
               </div>
   )
