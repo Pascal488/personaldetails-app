@@ -16,6 +16,9 @@ const registerpage = () => {
                             onSubmit={(data) => Submit(data)}
                             userCredantialErrors={userCredantialErrors?.message}
                             successMessage={successMessage}
+                            redirect="/login"
+                            redirectText1="Adready a member? "
+                            redirectText2="Login"
                      />
               </>
        )

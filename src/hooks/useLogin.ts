@@ -13,7 +13,7 @@ type ILogin = {
 const useLogin = () => {
        const [loginuser, {error }] = useMutation(LOGIN)
        const saveUserDetail = useDispatch()
-       const handleLogin = (data:ILogin) => {
+       const handleLogin = (data: ILogin) => {
               loginuser({
                      variables: {
                             loginInput: {

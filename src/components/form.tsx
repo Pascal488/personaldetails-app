@@ -14,11 +14,16 @@ type IFormProp = {
        headerText2?: string
        onSubmit: (data: INitialValues) => void
        userCredantialErrors: string | undefined
-       successMessage?:string
+       successMessage?: string
+       redirect: string 
+       redirectText1: string
+       redirectText2: string
+
+
        
        
 }
-const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMessage}:IFormProp) => {
+const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMessage,redirect,redirectText1,redirectText2}:IFormProp) => {
        const values: INitialValues = {
               email:"" ,
               password: "",
@@ -33,7 +38,7 @@ const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMess
     
   return (
        <div className="lg:flex lg:justify-center lg:items-center lg:w-full lg:h-screen md:flex md:justify-center md:h-screen md:items-center font-[Noto sans]">
-              <div className="flex flex-col p-5 gap-7 lg:max-h-full lg:p-12 lg:max-w-md lg:border-[1px] lg:border-gray-600 lg:rounded-xl md:max-w-md md:border-[1px] md:border-gray-600 md:rounded-xl">
+              <div className="flex flex-col p-5 gap-7 lg:max-h-full lg:p-12 lg:max-w-md lg:border-[1px] lg:border-[#E0E0E0] lg:rounded-xl md:max-w-md md:border-[1px] md:border-[#E0E0E0]  md:rounded-xl">
                      <div className="flex justify-between">
                             <div className="">
                                    <img src={LOGO} alt="" className="w-full "/>
@@ -57,7 +62,7 @@ const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMess
                                             register={register("email", {
                                                    required: "Email is required",
                                                    pattern: {
-                                                        value:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/,
+                                                        value:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                                                         message: 'Please enter a valid email',
                                             },
                                             })}
@@ -89,10 +94,10 @@ const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMess
                                           )
                                    })}
                             </div>
-                            <div className="flex justify-center ">
-                                     <p>Adready a member?
-                                            <Link to='/login' className="text-[#2F80ED] text-center hover:cursor-pointer space-x-5">
-                                                 Login  
+                            <div className="flex justify-center mt-2">
+                                     <p className="">{redirectText1}
+                                            <Link to={redirect} className="text-[#2F80ED] text-center hover:cursor-pointer ml-[4px]">
+                                                 {redirectText2}
                                             </Link>
                                      </p>
                             </div>

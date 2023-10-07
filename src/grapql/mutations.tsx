@@ -16,6 +16,7 @@ mutation LoginUser($loginInput: LoginInput!) {
   loginUser(loginInput: $loginInput) {
     email
     password
+    token
   }
 }
 

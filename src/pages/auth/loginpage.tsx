@@ -13,7 +13,11 @@ const loginpage = () => {
                      <Form
                             headerText1={'Login'}
                             onSubmit={(data) => Submit(data)}
-                            userCredantialErrors={userCredantialErrors?.message} />
+                            userCredantialErrors={userCredantialErrors?.message}
+                            redirect="/register"
+                            redirectText2="Register"
+                            redirectText1="Don’t have an account yet?"
+                     />
               </>
        )
 }
