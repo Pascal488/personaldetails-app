@@ -1,14 +1,26 @@
 import { useNavigate } from "react-router-dom"
 import PROFILE from "../../assets/images/devchallenges.png"
 import Header from "../../components/header"
-
+import { useSelector } from "react-redux"
+import { useLazyQuery } from "@apollo/client"
+import { GETUSERBYEMAIL } from "../../grapql/queries"
 
 
 
 const personalinfo = () => {
+       const userData:any = useSelector<any>(state => state.auth.user.loginUser)
        const navigate = useNavigate()
-       const goToEdit = () => {
-              navigate("/edit")
+       const[getUserData] = useLazyQuery(GETUSERBYEMAIL)
+       const goToEdit = (email:any) => {
+              getUserData({
+                     variables: {
+                            email: email
+                     },
+                     onCompleted(data) {
+                            navigate(`/edit/${email}`)
+                            console.log("Hizi data",data)
+                     }
+              })
        }
        return (
 
@@ -40,7 +52,7 @@ const personalinfo = () => {
                                                  </div>
                                           </div>
                                           <div>
-                                                 <button className="border-[1px] border-gray-600 rounded-xl w-[100px] py-1.5 px-4 text-gray-600" onClick={goToEdit}>Edit</button>
+                                                 <button className="border-[1px] border-gray-600 rounded-xl w-[100px] py-1.5 px-4 text-gray-600" onClick={()=>goToEdit(userData?.email)}>Edit</button>
                                           </div>
                                    </div>
                                    <hr className="h-px bg-gray-300 w-full"/>
@@ -52,17 +64,17 @@ const personalinfo = () => {
                                           <hr/>
                                           <div className="flex justify-between items-center py-3 px-5 lg:max-w-4xl">
                                                  <div><p className="text-sm text-gray-600">NAME</p></div>
-                                                 <div><p className="text-sm text-gray-600">Xanthe Neal</p></div>
+                                                        <div><p className="text-sm text-gray-600">{userData?.email}</p></div>
                                           </div>
                                            <hr className="h-px bg-gray-300 w-full"/>
                                           <div className="flex justify-between items-center py-3  px-5 lg:max-w-4xl">
                                                  <div><p className="text-sm text-gray-600">BIO</p></div>
-                                                 <div className="max-w-md"><p className="text-sm text-gray-600 text-right">I am a software developer and a big fan of devchallenges..</p></div>
+                                                        <div className="max-w-md"><p className="text-sm text-gray-600 text-right">{}</p></div>
                                           </div>
                                           <hr/>
                                           <div className="flex justify-between items-center py-3 px-5 lg:max-w-4xl">
                                                  <div><p className="text-sm text-gray-600">PASSWORD</p></div>
-                                                 <div><p className="text-sm text-gray-600">************</p></div>
+                                                        <div><p className="text-sm text-gray-600 truncate max-w-[100px]">{userData?.password}</p></div>
                                           </div>
                                    </div>
                             </div>
@@ -83,3 +95,5 @@ const personalinfo = () => {
 
 
 export default personalinfo
+
+

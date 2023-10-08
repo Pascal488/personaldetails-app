@@ -3,13 +3,15 @@ import Input, { Textarea, InputWrapper } from "../../components/input"
 import PROFILE from "../../assets/images/devchallenges.png"
 import { useForm } from "react-hook-form"
 import { IconChevronLeft } from "@tabler/icons-react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 
 
 
 const updateinfo = () => {
-      const navigate = useNavigate() 
+       const { userEmail } = useParams();
+       console.log("Email",userEmail)
+       const navigate = useNavigate() 
        const values = {
               name:"" ,
               bio: "",
@@ -41,6 +43,7 @@ const updateinfo = () => {
                                    <span className="flex items-center text-[#2D9CDB]" onClick={backtoInfo}>
                                           <IconChevronLeft />
                                           <p>Back</p>
+                                          <p>{userEmail}</p>
                                    </span>
                             </div>
                             <div className="flex  justify-center lg:mt-10  mt-5">

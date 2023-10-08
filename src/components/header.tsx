@@ -2,8 +2,10 @@ import LOGO from "../assets/images/devchallenges.svg"
 import PROFILE from "../assets/images/devchallenges.png"
 import { Menu } from "@headlessui/react"
 import { IconLogout, IconUserCircle, IconUsers } from "@tabler/icons-react"
-
+import {logoutUser} from "../lib/index"
+import { useNavigate } from "react-router-dom"
 const header = () => {
+       const navigate = useNavigate()
        const MenuItems = [
               {
                      text: "My Profile",
@@ -43,7 +45,7 @@ const header = () => {
                                                                       <Menu.Item as="a" key={key} className="flex flex-col border border-transparent  hover:bg-[#F2F2F2] hover:border-[#F2F2F2] px-2 rounded-md cursor-pointer">
                                                                              <div className="flex items-center space-x-2 py-2">
                                                                                     <span>{data.icon}</span>
-                                                                                    <span className={`text-sm ${key === 2 ? 'text-red-600' : ''}`}>{data.text}</span>
+                                                                                    <span className={`text-sm ${key === 2 ? 'text-red-600' : ''}`} onClick={()=>{if(key === 2){logoutUser()}if(key===0){navigate("/info")}}} >{data.text}</span>
                                                                              </div>
                                                                              {key === 1 ? (<><hr className="mt-[1px]"/></>) : ""}
                                                                      </Menu.Item>

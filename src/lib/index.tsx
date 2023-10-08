@@ -13,4 +13,19 @@ export const socialIcons = () => {
 }
 
 
+export function setLocalStorageItems(data: any) {
+       localStorage.setItem("token", data.loginUser.token);
+
+
+}
+     
+
+export function logoutUser() {
+       localStorage.removeItem("token");
+       location.reload();
+       window.location.href = "/login";
+       console.log("Am trying to log out", localStorage.removeItem("token"));
+}
+     
+
 

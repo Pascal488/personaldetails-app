@@ -13,7 +13,7 @@ const App = () => {
                               <Route path='/register' element={<Registerpage />} />
                               <Route path='/login' element={<LoginPage/>} />
                               <Route path='/info' element={<Personalinfo/>}/>
-                              <Route path='/edit' element={<Updateinfo/>}/>
+                              <Route path='/edit/:userEmail' element={<Updateinfo/>}/>
                      </Routes>
                 </BrowserRouter>
               </>
