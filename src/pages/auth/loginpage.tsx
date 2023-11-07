@@ -5,8 +5,8 @@ import useLogin from "../../hooks/useLogin"
 const loginpage = () => {
        const {handleLogin,userCredantialErrors} = useLogin()
        const Submit = (data: INitialValues) => {
-              console.log(data)
-              handleLogin(data)
+              const { email, password } = data
+              handleLogin({email,password})
             }
        return (
               <>

@@ -9,7 +9,7 @@ import { setLocalStorageItems } from "../lib"
 type ILogin = {
        email: string
        password: string
-       token:string
+       token?:string
 }
 
 

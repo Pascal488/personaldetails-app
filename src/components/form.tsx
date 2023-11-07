@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 export type INitialValues = {
        email:string
        password: string
-}
+       token?: string}
 type IFormProp = {
        headerText1: string
        headerText2?: string
@@ -58,10 +58,10 @@ const form = ({headerText1,headerText2,onSubmit,userCredantialErrors,successMess
                                             type={"text"}
                                             register={register("email", {
                                                    required: "Email is required",
-                                                   pattern: {
-                                                        value:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                                        message: 'Please enter a valid email',
-                                            },
+                                          //          pattern: {
+                                          //               // value:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                          //               message: 'Please enter a valid email',
+                                          //   },
                                             })}
                                      />
                                    {errors && (<span className="text-red-500 text-xs">{errors.email?.message}</span>)}  

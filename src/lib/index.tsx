@@ -13,7 +13,7 @@ export const socialIcons = () => {
 }
 
 
-export function setLocalStorageItems(data: any) {
+export function setLocalStorageItems(data: { loginUser: { token: string } }) {
        localStorage.setItem("token", data.loginUser.token);
 
 

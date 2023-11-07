@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom"
 
 
 
+
 const updateinfo = () => {
        const { userEmail } = useParams();
        console.log("Email",userEmail)
